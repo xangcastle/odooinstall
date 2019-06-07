@@ -1,8 +1,6 @@
-#!/usr/bin/env bash
-locale-gen es_NI.UTF-8
-dpkg-reconfigure locales
-
 #!/bin/bash
+#locale-gen es_NI.UTF-8
+#dpkg-reconfigure locales
 #Creamos el usuario y grupo de sistema 'odoo':
 adduser --system --quiet --shell=/bin/bash --home=/opt/odoo --gecos 'odoo' --group odoo
 #Creamos en directorio en donde se almacenará el archivo de configuración y log de odoo::
@@ -10,7 +8,7 @@ mkdir /etc/odoo && mkdir /var/log/odoo/
 # Instalamos Postgres y librerías base del sistema:
 apt-get update && apt-get install postgresql build-essential python3-pil python3-lxml python-ldap3 python3-dev python3-pip python3-setuptools npm nodejs git gdebi libldap2-dev libsasl2-dev  libxml2-dev libxslt1-dev libjpeg-dev zlib libtiff-dev python3-pypdf2 libpq-dev -y
 #Descargamos odoo version 11 desde git:
-git clone --depth 1 --branch 11.0 https://github.com/odoo/odoo /opt/odoo/odoo
+git clone --depth 1 --branch 12.0 https://github.com/odoo/odoo /opt/odoo/odoo
 #Damos permiso al directorio que contiene los archivos de OdooERP  e instalamos las dependencias de python3 
 chown odoo:odoo /opt/odoo/ -R && chown odoo:odoo /var/log/odoo/ -R && cd /opt/odoo/odoo && pip3 install -r requirements.txt
 #Usamos npm, que es el gestor de paquetes Node.js para instalar less 
